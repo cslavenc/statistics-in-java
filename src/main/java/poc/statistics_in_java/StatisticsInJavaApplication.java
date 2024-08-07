@@ -5,7 +5,6 @@ import org.apache.commons.math3.stat.StatUtils;
 import org.apache.commons.math3.stat.inference.TTest;
 import org.apache.commons.math3.stat.inference.TestUtils;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.IOException;
@@ -67,7 +66,7 @@ public class StatisticsInJavaApplication {
 			System.out.println("Mean of observed values: " + StatUtils.mean(latencies));
 			System.out.println("SD of observed values: " + Math.sqrt(StatUtils.variance(latencies)));
 			System.out.println("is significant (H_0 is rejected): " + TestUtils.tTest(populationMean, latencies, alpha*2));  // *2 because it is one-sided
-			System.out.println("p-value: " + TestUtils.tTest(populationMean, latencies));  // *2 because it is one-sided
+			System.out.println("p-value: " + TestUtils.tTest(populationMean, latencies));
 			System.out.println("t-statistic: " + TestUtils.t(populationMean, latencies));
 
 
