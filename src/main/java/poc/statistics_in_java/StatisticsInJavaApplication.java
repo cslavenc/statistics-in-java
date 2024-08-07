@@ -55,7 +55,7 @@ public class StatisticsInJavaApplication {
 			double populationMean = riggedMean;
 			TTest tTest = new TTest();
 
-			var isSignificant = tTest.tTest(populationMean, latencies, alpha);
+			var isSignificant = tTest.tTest(populationMean, latencies, alpha*2);
 
 			System.out.println("\n***Perform test with observed values***");
 			// false => sample mean is drawn from the same population as populationMean, which is good
