@@ -51,8 +51,8 @@ public class StatisticsInJavaApplication {
 					long endTime = System.nanoTime();
 
 					if (isReachable) {
-						latencies[measurement + measurements*run] = endTime - startTime;
-						riggedLatencies[measurement + measurements*run] = normalDistribution.sample()*riggedModifier;
+						latencies[measurement + measurements*run] = Math.log(endTime - startTime);
+						riggedLatencies[measurement + measurements*run] = Math.log(normalDistribution.sample()*riggedModifier);
 					}
 
 				}
@@ -60,7 +60,7 @@ public class StatisticsInJavaApplication {
 
 			// perform t-Test
 			double alpha = 0.01;
-			double populationMean = riggedMean;
+			double populationMean = Math.log(riggedMean);
 			double degreesOfFreedom = runs*measurements - 1; // df = N - #groups, #groups = 1 (one-sample t-test)
 			TTest tTest = new TTest();
 			TDistribution tDistribution = new TDistribution(degreesOfFreedom);
